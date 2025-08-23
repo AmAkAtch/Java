@@ -53,6 +53,7 @@ public class BasicStringMethods {
         System.out.println(userName.replace(".", "_")); // This literally convertes whatever is written before comman
         System.out.println(userName.replaceAll("\\.", "_")); // this converts the regex
 
+<<<<<<< HEAD
         // String Comparision
         String s1 = "hello";
         String s2 = "hello";
@@ -107,5 +108,7 @@ public class BasicStringMethods {
         String joined = String.join("@", parts); // "a@b.com"
         System.out.println(valid + " " + joined);
 
+=======
+>>>>>>> 82ca21f03c39351ca4dc06678e60d3d463c2ba8d
     }
 }
