@@ -1,6 +1,6 @@
 //This program saves and reads employee data from the file
 
-package day09_file_io_and_exceptionhandling.basics;
+package day09_file_io_and_exceptionhandling.basics.BasicsOfFileIO;
 
 import java.io.File;
 import java.io.FileNotFoundException;

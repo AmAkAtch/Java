@@ -1,0 +1,6 @@
+Common errors with file handling
+1. Forgetting to close file with fileWriter.close(); 
+2. Not checking if file exists
+3. Not using exception handling
+
+we use true as a second parameter in FileWriter - this means "append mode"

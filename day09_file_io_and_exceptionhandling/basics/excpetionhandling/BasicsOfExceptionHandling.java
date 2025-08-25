@@ -1,5 +1,5 @@
 //This programm calculated salary bonus for employees a real business need
-package day09_file_io_and_exceptionhandling.basics;
+package day09_file_io_and_exceptionhandling.basics.excpetionhandling;
 
 public class BasicsOfExceptionHandling {
     public static void main(String[] args) {
