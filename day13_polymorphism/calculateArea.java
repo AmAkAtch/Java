@@ -33,7 +33,7 @@ class Rectangle extends Shape {
     }
 }
 
-public class calculateArea {
+public class CalculateArea {
     public static void main(String[] args) {
 
         Shape[] shapes = new Shape[4];
