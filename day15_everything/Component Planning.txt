@@ -1,0 +1,45 @@
+CLASS: Student
+==============
+Purpose: Represent a single student with their information
+
+ATTRIBUTES (What data it stores):
+- studentId (String) - Unique identifier
+- name (String) - Student's full name
+- email (String) - Contact email
+- grades (HashMap<String, Integer>) - Subject → Grade mapping
+
+METHODS (What it can do):
+- Constructor: Initialize student with ID, name, email
+- getStudentId(): Return student ID
+- getName(): Return student name
+- getEmail(): Return student email
+- addGrade(subject, grade): Add/update a grade (with validation)
+- getAverageGrade(): Calculate and return average
+- displayGrades(): Show all grades with average
+
+WHY HashMap for grades?
+- Need to store subject-grade pairs
+- Fast lookup by subject name
+- Can have multiple subjects
+
+
+CLASS: StudentManagementSystem
+==============================
+Purpose: Manage collection of students and operations
+
+ATTRIBUTES:
+- students (HashMap<String, Student>) - StudentID → Student mapping
+
+WHY HashMap?
+- Fast lookup by student ID (O(1))
+- Ensures unique student IDs
+- Professional data structure choice
+
+METHODS:
+- Constructor: Initialize empty student collection
+- addStudent(Student): Add new student to system
+- findStudent(studentId): Find and return student (throws exception if not found)
+- addGradeToStudent(studentId, subject, grade): Add grade to specific student
+- displayAllStudents(): Show all students
+- getTopPerformers(count): Return list of top N students
+- generateReport(): Show overall statistics

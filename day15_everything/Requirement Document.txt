@@ -1,0 +1,22 @@
+REQUIREMENT DOCUMENT
+=============================
+System : Student management System
+
+Core features:
+1. Add new students to the System
+2. Store Student information
+3. Record grades for different subjects
+4. Calculate average grades
+5. View individual Student details
+6. Generate performance reports
+7. Find top performing students
+
+Data to store:
+1. Student: Id, Name, Email, Grades for Multiple
+2. Grade : Subject, Score
+
+Business Rules:
+1. Student ID must be unique
+2. Grades must be between 0-100
+3. Can not add duplicate students
+4. Must handle erros like Student not found and invalid scores

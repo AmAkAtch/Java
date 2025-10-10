@@ -1,0 +1,16 @@
+Components (Classes):
+============================
+
+1. Student (Data Model)
+    - represents one students
+    - Stores student information
+
+2. StudentManagementSystem (Business logic)
+    - Manages all students
+    - Performs operations
+
+3. StudentNotFoundException (Custom exception)
+
+3. School
+    - Entry point for the program
+
