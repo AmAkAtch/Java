@@ -7,11 +7,11 @@ class StudentManagementSystem {
 
     private HashMap<Integer, Student> students;
 
-    public StudentManagementSystem(Student student) {
+    public StudentManagementSystem() {
         this.students = new HashMap<>();
     }
 
-    public void addStudents(Student student) {
+    public void addStudent(Student student) {
         // This method gets the studentid and uses that as a key to store student in
         // Student map
         students.put(student.getStudentId(), student);
@@ -51,7 +51,7 @@ class StudentManagementSystem {
         }
     }
 
-    public void displayAllstudents() {
+    public void displayAllStudents() {
         System.out.println("All Students");
         System.out.println("Total Student: " + students.size());
         System.out.println("=======================");
@@ -62,7 +62,7 @@ class StudentManagementSystem {
     }
 
     // Method to find the top N best performing students
-    public ArrayList<Student> findBestPerformingStudents(int count) {
+    public ArrayList<Student> getTopPerformers(int count) {
         /*
          * This method makes new array lists consisting values from Student map
          * using bubble sort entire arra list is sorted
