@@ -4,7 +4,7 @@ import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.TreeSet;
 
-public class SetMapHashLists {
+public class BasicHashSet {
 
     public static void main(String[] args) {
 
