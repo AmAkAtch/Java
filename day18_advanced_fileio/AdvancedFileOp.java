@@ -5,6 +5,12 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
+import java.util.Arrays;
+import java.util.List;
 
 public class AdvancedFileOp {
     public static void main(String[] args) {
@@ -40,7 +46,7 @@ public class AdvancedFileOp {
             System.out.println("List of files in Directory");
 
             for (File f : files) {
-                System.out.println(f.getName() + (f.isDirectory() ? "(Folder)" : ""));
+                System.out.println("- " + f.getName() + (f.isDirectory() ? "(Folder)" : ""));
             }
         } else {
             System.out.println(directory.getName() + " is Empty Directory !!");
@@ -59,7 +65,7 @@ public class AdvancedFileOp {
                 // System.out.println(byteValue);
             }
 
-            System.out.println("Non binary file read for total " + totalBytes / 1024 + " KiloBytes");
+            System.out.println("Binary file read for total " + totalBytes / 1024 + " KiloBytes");
         } catch (FileNotFoundException e) {
             System.err.println("File not found: " + e.getMessage());
         } catch (IOException e) {
@@ -97,6 +103,62 @@ public class AdvancedFileOp {
         } catch (IOException e) {
             System.err.println("Error in input output: " + e.getMessage());
         }
+        // NIO - NON BLOCKING I/O OR NEW I/O
+        // Using Path and FIles
+
+        Path path = Paths.get("day18_advanced_fileio/data/employees.txt");
+
+        try {
+            if (Files.exists(path)) {
+                System.out.println("Files exists");
+
+                long size = Files.size(path);
+
+                System.out.println("File size:" + size + " Bytes");
+                System.out.println("Is file readable? " + Files.isReadable(path));
+                System.out.println("Is file Writable? " + Files.isWritable(path));
+
+            } else {
+                System.out.println("File does not exist");
+            }
+        } catch (IOException e) {
+            System.err.println("IO expection found while getting file: " + e.getMessage());
+        }
+
+        // READING ENTIRE FILE AT ONCE
+        try {
+            List<String> lines = Files.readAllLines(path);
+
+            for (String line : lines) {
+                System.out.println(line);
+            }
+        } catch (IOException e) {
+            System.err.println("Error reading the file: " + e.getMessage());
+        }
+
+        // WRITING ENTIRE FILE AS ONCE
+        try {
+            List<String> lines = Arrays.asList(
+                    "Employee Records",
+                    "Rushiraj, 50000", "Rushi, 60000", "Bhumik, 40000");
+
+            Files.write(path, lines);
+            System.out.println("Emplyee data saved successfully");
+
+            String content = "Madhav, 40000";
+            Files.write(path, content.getBytes(), StandardOpenOption.APPEND);
+        } catch (IOException e) {
+            System.err.println("IO exection occured while saving employee data: " + e.getMessage());
+        }
+
+        // READING LARGER FILES IN GBS, NO NEED TO LOAD EVERYTHING INTO MEMORY!
+        try {
+            Files.lines(path).filter(line -> !line.isEmpty()).map(String::toUpperCase).limit(10)
+                    .forEach(System.out::println);
+        } catch (IOException e) {
+        }
+
+        // CSV processing
 
     }
 }

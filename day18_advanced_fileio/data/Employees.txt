@@ -1,0 +1,5 @@
+Employee Records
+Rushiraj, 50000
+Rushi, 60000
+Bhumik, 40000
+Madhav, 40000
