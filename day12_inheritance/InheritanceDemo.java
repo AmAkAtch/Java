@@ -4,7 +4,7 @@ package day12_inheritance;
 // This shows how inheritance works in a real business application
 
 // PARENT CLASS (SUPERCLASS) - Contains common functionality
-public class Employee {
+class Employee {
     // PROTECTED fields - accessible to subclasses but not to outside world
     protected String employeeId;
     protected String fullName;
@@ -530,9 +530,6 @@ public class InheritanceDemo {
         System.out.println("projectManager instanceof Manager: " + (projectManager instanceof Manager));
         System.out.println("javaDeveloper instanceof Employee: " + (javaDeveloper instanceof Employee));
         System.out.println("javaDeveloper instanceof Developer: " + (javaDeveloper instanceof Developer));
-
-        // This would be false - Manager is not a Developer
-        System.out.println("projectManager instanceof Developer: " + (projectManager instanceof Developer));
 
         System.out.println("\n=== SHARED FUNCTIONALITY DEMONSTRATION ===");
 
