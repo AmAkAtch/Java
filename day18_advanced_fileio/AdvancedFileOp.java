@@ -159,6 +159,20 @@ public class AdvancedFileOp {
         }
 
         // CSV processing
+        Path csvPath = Paths.get("day18_advanced_fileio/data/Employees copy.txt");
+        try {
+            Files.lines(csvPath).skip(1).forEach(line -> {
+                String[] parts = line.split(",");
+                String employeeName = parts[0];
+                String employeeAge = parts[1];
+                String employeeSalary = parts[2];
+                String employeeDept = parts[3];
 
+                System.out.println("Employee name: " + employeeName + ", Employee Age: " + employeeAge
+                        + ", Employee Salary: " + employeeSalary + ",Employee Department: " + employeeDept);
+            });
+        } catch (IOException e) {
+
+        }
     }
 }
