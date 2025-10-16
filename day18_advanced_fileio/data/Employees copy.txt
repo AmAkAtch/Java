@@ -2,3 +2,6 @@ Name,Age,Salary,Department
 John Smith,30,50000,Engineering
 Sarah Johnson,28,60000,Sales
 Mike Chen,32,55000,Engineering
+Madhav, 26, 50000, SDE
+Bhumik, 27, 29233, Marketting
+

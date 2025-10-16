@@ -5,10 +5,18 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.nio.file.FileSystems;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
+import static java.nio.file.StandardWatchEventKinds.ENTRY_CREATE;
+import static java.nio.file.StandardWatchEventKinds.ENTRY_DELETE;
+import static java.nio.file.StandardWatchEventKinds.ENTRY_MODIFY;
+import java.nio.file.WatchEvent;
+import java.nio.file.WatchKey;
+import java.nio.file.WatchService;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -172,7 +180,50 @@ public class AdvancedFileOp {
                         + ", Employee Salary: " + employeeSalary + ",Employee Department: " + employeeDept);
             });
         } catch (IOException e) {
-
+            System.err.println("Caught IO exception: " + e.getMessage());
         }
+
+        // Creating CSV file
+        try {
+            ArrayList<String> employees = new ArrayList<>();
+
+            employees.add("Madhav, 26, 50000, SDE");
+            employees.add("Bhumik, 27, 29233, Marketting");
+
+            Files.write(csvPath, employees, StandardOpenOption.APPEND);
+        } catch (IOException e) {
+            System.err.println("Caught an error while writting to CSV file: " + e.getMessage());
+        }
+
+        // WATCHSERVICE TO MONITOR THE FILE
+        try {
+            WatchService watchService = FileSystems.getDefault().newWatchService();
+
+            path.register(watchService, ENTRY_CREATE, ENTRY_MODIFY, ENTRY_DELETE);
+
+            System.out.println("Watching directory: " + csvPath);
+
+            while (true) {
+                WatchKey key = watchService.take();
+
+                for (WatchEvent<?> event : key.pollEvents()) {
+                    WatchEvent.Kind<?> kind = event.kind();
+                    Path fileName = (Path) event.context();
+
+                    if (kind == ENTRY_CREATE) {
+                        System.out.println("✓ File created: " + fileName);
+                    } else if (kind == ENTRY_MODIFY) {
+                        System.out.println("📝 File modified: " + fileName);
+                    } else if (kind == ENTRY_DELETE) {
+                        System.out.println("✗ File deleted: " + fileName);
+                    }
+                }
+
+                key.reset();
+            }
+
+        } catch (Exception e) {
+        }
+
     }
 }
